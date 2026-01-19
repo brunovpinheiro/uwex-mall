@@ -24,6 +24,31 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+
+    /* layout */
+    --max-container: 1408px;
+    --max-container-small: 1080px;
+    --padding-global: 80px;
+    --padding-global-mobile: 20px;
+    --gutter: 32px;
+    --gutter-mobile: 20px;
+
+    /* type */
+    --family-title: 'Manrope', sans-serif;
+    --family-body: 'Manrope', sans-serif;
+    --type-size-text-xs: 12px;
+    --type-size-text-sm: 14px;
+    --type-size-text-base: 16px;
+    --type-size-text-lg: 18px;
+    --type-size-text-xl: 20px;
+    --type-size-text-2xl: 24px;
+    --type-size-text-3xl: 32px;
+    --type-size-text-4xl: 36px;
+    --type-size-text-5xl: 48px;
+    --type-size-text-6xl: 60px;
+    --type-size-text-7xl: 72px;
+    --type-size-text-8xl: 96px;
+    --type-size-text-9xl: 128px;
   }
 
   .dark {

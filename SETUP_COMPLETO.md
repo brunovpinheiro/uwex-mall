@@ -4,10 +4,10 @@
 
 Este projeto usa **repositórios separados** para facilitar a clonagem para novos clientes:
 
-| Repositório | Descrição | URL |
-|-------------|-----------|-----|
+| Repositório            | Descrição                   | URL                                                  |
+| ---------------------- | --------------------------- | ---------------------------------------------------- |
 | **uwex-mall-frontend** | Next.js + Tailwind + ShadCN | https://github.com/brunovpinheiro/uwex-mall-frontend |
-| **uwex-mall-strapi** | Strapi CMS (Backend) | https://github.com/brunovpinheiro/uwex-mall-strapi |
+| **uwex-mall-strapi**   | Strapi CMS (Backend)        | https://github.com/brunovpinheiro/uwex-mall-strapi   |
 
 ### Estrutura Local
 
@@ -31,10 +31,10 @@ Este projeto usa **repositórios separados** para facilitar a clonagem para novo
 
 ### Proximos Passos
 
-- [ ] Criar usuario admin no Strapi
-- [ ] Criar Collections no Strapi
-- [ ] Gerar API Token
-- [ ] Popular dados de exemplo
+- [x] Criar usuario admin no Strapi
+- [x] Criar Collections no Strapi
+- [x] Gerar API Token
+- [x] Popular dados de exemplo
 
 ---
 
@@ -67,6 +67,7 @@ Na primeira vez, voce precisara criar um usuario administrador:
 Consulte o arquivo [STRAPI_SETUP.md](./STRAPI_SETUP.md) para instrucoes detalhadas sobre como criar todas as Collections necessarias.
 
 **Collections principais:**
+
 1. dados-gerais (Single Type)
 2. categorias-lojas (Collection)
 3. lojas (Collection)
@@ -123,6 +124,7 @@ Para permitir acesso publico aos dados:
    - `findOne`
 
 Para as Collections:
+
 - dados-gerais
 - lojas
 - categorias-lojas
