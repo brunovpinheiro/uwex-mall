@@ -98,7 +98,7 @@ export default function Navbar() {
                   <input
                     type="search"
                     placeholder="Buscar..."
-                    className="w-full rounded-md border border-input bg-background py-2 pl-10 pr-4 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="w-full rounded-md border border-input bg-background py-2 pl-10 pr-4 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   />
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function Navbar() {
               <input
                 type="search"
                 placeholder="Buscar lojas, produtos, eventos..."
-                className="w-full rounded-md border border-input bg-background py-3 pl-10 pr-12 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full rounded-md border border-input bg-background py-3 pl-10 pr-12 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 autoFocus
               />
               <Button

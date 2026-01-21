@@ -24,30 +24,33 @@ export default function BeneficiosSection({ titulo, cards }: BeneficiosSectionPr
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card, index) => {
-            const CardWrapper = card.link ? Link : 'div';
-            const wrapperProps = card.link ? { href: card.link } : {};
+            const cardContent = (
+              <Card className={`h-full ${card.link ? 'hover:shadow-lg transition-shadow cursor-pointer' : ''}`}>
+                <CardHeader>
+                  {card.icone && (
+                    <div className="relative w-16 h-16 mb-4">
+                      <Image
+                        src={getStrapiMedia(card.icone)}
+                        alt={card.titulo}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+                  <CardTitle>{card.titulo}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{card.descricao}</p>
+                </CardContent>
+              </Card>
+            );
 
-            return (
-              <CardWrapper key={index} {...wrapperProps}>
-                <Card className={`h-full ${card.link ? 'hover:shadow-lg transition-shadow cursor-pointer' : ''}`}>
-                  <CardHeader>
-                    {card.icone && (
-                      <div className="relative w-16 h-16 mb-4">
-                        <Image
-                          src={getStrapiMedia(card.icone)}
-                          alt={card.titulo}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                    <CardTitle>{card.titulo}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{card.descricao}</p>
-                  </CardContent>
-                </Card>
-              </CardWrapper>
+            return card.link ? (
+              <Link key={index} href={card.link}>
+                {cardContent}
+              </Link>
+            ) : (
+              <div key={index}>{cardContent}</div>
             );
           })}
         </div>

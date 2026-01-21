@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: ['class'],
+  darkMode: 'class',
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -11,9 +11,9 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: '5rem',
       screens: {
-        '2xl': '1400px',
+        '2xl': '1568px',
       },
     },
     extend: {
@@ -73,7 +73,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography')],
 };
 
 export default config;

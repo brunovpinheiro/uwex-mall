@@ -115,7 +115,7 @@ export default function ContatoForm() {
           {...register('mensagem')}
           placeholder="Escreva sua mensagem"
           rows={5}
-          className="mt-1 flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          className="mt-1 flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         />
         {errors.mensagem && (
           <p className="text-sm text-destructive mt-1">{errors.mensagem.message}</p>

@@ -6,67 +6,44 @@ import { MySwiper } from '@/components/sections/home-banners';
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      <MySwiper slides={['Primeiro slide', 'Segundo slide', 'Terceiro slide', 'Quarto slide']} />
+      <section className="s-home-slider">
+        <MySwiper
+          slides={[
+            {
+              desktop: 'https://placehold.co/1728x560',
+              mobile: 'https://placehold.co/800x600',
+              alt: 'Banner Principal 1',
+            },
+            {
+              desktop: 'https://placehold.co/1728x560',
+              mobile: 'https://placehold.co/800x600',
+              alt: 'Banner Principal 2',
+            },
+          ]}
+        />
+      </section>
 
-      <section className="container mx-auto px-4 py-20">
-        <div className="space-y-6 text-center">
-          <h1 className="text-5xl font-bold">Bem-vindo ao Shopping Center</h1>
-          <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-            Seu destino completo para compras, entretenimento e gastronomia
-          </p>
+      <section className="s-home-news-events"></section>
 
-          <div className="flex flex-wrap justify-center gap-4 pt-8">
-            <Button asChild size="lg">
-              <Link href="/lojas">Nossas Lojas</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/eventos">Eventos</Link>
-            </Button>
+      <section className="s-home-minibanners"></section>
+
+      <section className="s-home-lojas"></section>
+
+      <section className="s-home-cinema"></section>
+
+      <section className="s-home-middlebanners"></section>
+
+      <section className="s-home-vitrine"></section>
+
+      <section className="s-home-comodidades py-24">
+        <div className="container mx-auto">
+          <div className="s-comodidades_component text-center">
+            <h2 className="s-comodidades_title text-4xl">Tudo para sua visita ser melhor</h2>
           </div>
         </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Lojas</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Descubra as melhores marcas e lojas em um só lugar
-              </p>
-              <Button asChild className="mt-4" variant="link">
-                <Link href="/lojas">Ver todas as lojas</Link>
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Eventos</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">Confira a programação de eventos e atividades</p>
-              <Button asChild className="mt-4" variant="link">
-                <Link href="/eventos">Ver eventos</Link>
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Cinema</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Veja os filmes em cartaz e horários das sessões
-              </p>
-              <Button asChild className="mt-4" variant="link">
-                <Link href="/cinema">Ver programação</Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
       </section>
+
+      <section className="s-home-newsletter"></section>
     </main>
   );
 }

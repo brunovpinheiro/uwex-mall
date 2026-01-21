@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body>
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Toaster position="top-right" richColors />

@@ -15,13 +15,30 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-// Tipagem opcional de props, caso queira deixar genérico
+// Tipagem para cada slide com imagens responsivas
+interface SlideImage {
+  desktop: string;
+  mobile: string;
+  alt?: string;
+}
+
 interface MySwiperProps {
-  slides?: string[];
+  slides?: SlideImage[];
 }
 
 export function MySwiper({ slides }: MySwiperProps) {
-  const slidesToRender = slides ?? ['Slide 1', 'Slide 2', 'Slide 3'];
+  const slidesToRender = slides ?? [
+    {
+      desktop: '/images/banner-1-desktop.jpg',
+      mobile: '/images/banner-1-mobile.jpg',
+      alt: 'Banner 1',
+    },
+    {
+      desktop: '/images/banner-2-desktop.jpg',
+      mobile: '/images/banner-2-mobile.jpg',
+      alt: 'Banner 2',
+    },
+  ];
 
   return (
     <Swiper
@@ -40,20 +57,31 @@ export function MySwiper({ slides }: MySwiperProps) {
       }}
       style={{ width: '100%' }}
     >
-      {slidesToRender.map((text) => (
-        <SwiperSlide key={text}>
+      {slidesToRender.map((slide, index) => (
+        <SwiperSlide key={`${slide.desktop}-${index}`}>
           <div
             style={{
-              background: '#0f172a',
-              color: 'white',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.5rem',
+              width: '100%',
+              height: 'auto',
+              position: 'relative',
             }}
           >
-            {text}
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcSet={slide.desktop}
+              />
+              <img
+                src={slide.mobile}
+                alt={slide.alt || `Banner ${index + 1}`}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            </picture>
           </div>
         </SwiperSlide>
       ))}
