@@ -1,7 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import ContatoForm from '@/components/forms/contato-form';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
-
 export const metadata = {
   title: 'Contato',
   description: 'Entre em contato com o shopping',
@@ -31,7 +29,7 @@ export default function ContatoPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-primary mt-0.5" />
+                  <i className="hgi-stroke hgi-standard hgi-call text-xl text-primary mt-0.5" />
                   <div>
                     <p className="font-semibold">Telefone</p>
                     <p className="text-muted-foreground">(00) 0000-0000</p>
@@ -39,7 +37,7 @@ export default function ContatoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-primary mt-0.5" />
+                  <i className="hgi-stroke hgi-standard hgi-mail-01 text-xl text-primary mt-0.5" />
                   <div>
                     <p className="font-semibold">Email</p>
                     <p className="text-muted-foreground">contato@shopping.com.br</p>
@@ -47,7 +45,7 @@ export default function ContatoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                  <i className="hgi-stroke hgi-standard hgi-location-01 text-xl text-primary mt-0.5" />
                   <div>
                     <p className="font-semibold">Endereço</p>
                     <p className="text-muted-foreground">
@@ -59,7 +57,7 @@ export default function ContatoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="h-5 w-5 text-primary mt-0.5" />
+                  <i className="hgi-stroke hgi-standard hgi-clock-01 text-xl text-primary mt-0.5" />
                   <div>
                     <p className="font-semibold">Horário de Funcionamento</p>
                     <p className="text-muted-foreground">

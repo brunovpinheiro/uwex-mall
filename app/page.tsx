@@ -2,6 +2,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MySwiper } from '@/components/sections/home-banners';
+import { NewsEventsSection } from '@/components/sections/news-events-section';
+import { StoresSection } from '@/components/sections/stores-section';
+import { NowShowingSection } from '@/components/sections/now-showing-section';
+import { VirtualShowcaseSection } from '@/components/sections/virtual-showcase-section';
+import { AmenitiesSection } from '@/components/sections/amenities-section';
+import { BannersSection } from '@/components/sections/banners-section';
+import Footer from '@/components/layout/footer';
 
 export default function HomePage() {
   return (
@@ -23,27 +30,23 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="s-home-news-events"></section>
+      <section className="s-home-news-events">
+        <NewsEventsSection />
+      </section>
 
       <section className="s-home-minibanners"></section>
 
-      <section className="s-home-lojas"></section>
+      <StoresSection />
 
-      <section className="s-home-cinema"></section>
+      <NowShowingSection />
 
-      <section className="s-home-middlebanners"></section>
+      <BannersSection />
 
-      <section className="s-home-vitrine"></section>
+      <VirtualShowcaseSection />
 
-      <section className="s-home-comodidades py-24">
-        <div className="container mx-auto">
-          <div className="s-comodidades_component text-center">
-            <h2 className="s-comodidades_title text-4xl">Tudo para sua visita ser melhor</h2>
-          </div>
-        </div>
-      </section>
+      <AmenitiesSection />
 
-      <section className="s-home-newsletter"></section>
+      <Footer />
     </main>
   );
 }

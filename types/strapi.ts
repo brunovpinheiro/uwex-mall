@@ -238,3 +238,31 @@ export interface CinemaConfig {
   diasExibicao: number;
   ativo: boolean;
 }
+
+export interface Filme {
+  id: number;
+  titulo: string;
+  slug: string;
+  sinopse?: string;
+  poster: Media;
+  classificacaoIndicativa: number;
+  duracao?: number;
+  generos?: string[];
+  diretor?: string;
+  elenco?: string[];
+  emCartaz: boolean;
+  emBreve: boolean;
+  sessoes?: Sessao[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt?: string;
+}
+
+export interface Sessao {
+  id: number;
+  horario: string;
+  tipo3D: boolean;
+  tipoLegendado: boolean;
+  sala?: string;
+  dataExibicao: string;
+}

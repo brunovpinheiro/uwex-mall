@@ -7,7 +7,6 @@ import { generateSEO } from '@/lib/utils/seo';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { formatPhone } from '@/lib/utils/format';
-import { Instagram, Globe, Phone, MapPin } from 'lucide-react';
 
 export const revalidate = 1800;
 
@@ -65,7 +64,7 @@ export default async function LojaDetailPage({ params }: PageProps) {
 
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
+                  <i className="hgi-stroke hgi-standard hgi-location-01 text-base" />
                   <span>{loja.piso} - {loja.localizacao}</span>
                 </div>
                 <Badge variant="outline">{loja.categoria?.nome}</Badge>
@@ -81,7 +80,7 @@ export default async function LojaDetailPage({ params }: PageProps) {
                 {loja.telefone && (
                   <Button variant="outline" asChild>
                     <a href={`tel:${loja.telefone}`}>
-                      <Phone className="h-4 w-4 mr-2" />
+                      <i className="hgi-stroke hgi-standard hgi-call text-base mr-2" />
                       {formatPhone(loja.telefone)}
                     </a>
                   </Button>
@@ -94,7 +93,7 @@ export default async function LojaDetailPage({ params }: PageProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Phone className="h-4 w-4 mr-2" />
+                      <i className="hgi-stroke hgi-standard hgi-call text-base mr-2" />
                       WhatsApp
                     </a>
                   </Button>
@@ -107,7 +106,7 @@ export default async function LojaDetailPage({ params }: PageProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Instagram className="h-4 w-4 mr-2" />
+                      <i className="hgi-stroke hgi-standard hgi-instagram text-base mr-2" />
                       Instagram
                     </a>
                   </Button>
@@ -116,7 +115,7 @@ export default async function LojaDetailPage({ params }: PageProps) {
                 {loja.website && (
                   <Button variant="outline" asChild>
                     <a href={loja.website} target="_blank" rel="noopener noreferrer">
-                      <Globe className="h-4 w-4 mr-2" />
+                      <i className="hgi-stroke hgi-standard hgi-globe-02 text-base mr-2" />
                       Website
                     </a>
                   </Button>

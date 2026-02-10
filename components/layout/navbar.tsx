@@ -1,137 +1,135 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, Search, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils/cn';
-import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
 import { mainNav } from '@/config/navigation.config';
-import { siteConfig } from '@/config/site.config';
+import { HorariosWidget } from '@/components/ui/horarios-widget';
+import { MegaMenu } from '@/components/layout/mega-menu';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Close mega menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Prevent body scroll when mega menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        {/* Logo */}
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">{siteConfig.name}</span>
-        </Link>
+    <header className="sticky top-0 z-50 w-full">
+      {/* Navbar */}
+      <div className="bg-background relative z-[2] flex h-20 w-full items-center justify-center px-(--padding-global-mobile) shadow-[0px_8px_10px_0px_rgba(38,54,79,0.06)] md:px-(--padding-global)">
+        <div className="flex w-full max-w-(--max-container) items-center gap-6">
+          {/* Logo */}
+          <div className="flex max-w-72 flex-1 items-start py-4">
+            <Link href="/" className="relative h-12 w-[150px] overflow-hidden">
+              <Image
+                src="/assets/logo-color.svg"
+                alt="Shopping Estação"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </Link>
+          </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex md:flex-1 md:items-center md:justify-center">
-          <ul className="flex items-center space-x-6">
-            {mainNav.map((item) => (
-              <li key={item.href}>
+          {/* Nav Menu - Desktop */}
+          <nav className="hidden flex-1 items-center justify-center gap-4 lg:flex">
+            {mainNav.map((item) => {
+              const isActive =
+                item.href === '/'
+                  ? pathname === '/'
+                  : pathname === item.href || pathname?.startsWith(item.href + '/');
+              return (
                 <Link
+                  key={item.href}
                   href={item.href}
-                  className={cn(
-                    'text-sm font-medium transition-colors hover:text-primary',
-                    pathname === item.href || pathname?.startsWith(item.href + '/')
-                      ? 'text-primary'
-                      : 'text-muted-foreground'
-                  )}
+                  className="relative flex h-20 items-center justify-center overflow-hidden px-2"
                 >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Actions */}
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          {/* Search Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:flex"
-            onClick={() => setIsSearchOpen(!isSearchOpen)}
-            aria-label="Buscar"
-          >
-            <Search className="h-5 w-5" />
-          </Button>
-
-          {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Menu">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <SheetHeader>
-                <SheetTitle>{siteConfig.name}</SheetTitle>
-              </SheetHeader>
-              <nav className="mt-8 flex flex-col space-y-4">
-                {mainNav.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
+                  <span
                     className={cn(
-                      'text-lg font-medium transition-colors hover:text-primary',
-                      pathname === item.href || pathname?.startsWith(item.href + '/')
-                        ? 'text-primary'
-                        : 'text-muted-foreground'
+                      'hover:text-foreground text-[15px] leading-[1.5] font-medium motion-safe:transition-colors',
+                      isActive ? 'text-foreground' : 'text-muted-foreground'
                     )}
                   >
                     {item.title}
-                  </Link>
-                ))}
-              </nav>
+                  </span>
+                  {isActive && (
+                    <span className="bg-primary absolute -bottom-1 left-1/2 h-1 w-10 -translate-x-1/2 rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
 
-              {/* Mobile Search */}
-              <div className="mt-8">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <input
-                    type="search"
-                    placeholder="Buscar..."
-                    className="w-full rounded-md border border-input bg-background py-2 pl-10 pr-4 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  />
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+          {/* Right section */}
+          <div className="flex max-w-72 flex-1 items-center justify-end gap-4">
+            {/* Horarios Widget - Desktop */}
+            <div className="hidden lg:block">
+              <HorariosWidget />
+            </div>
+
+            {/* Search Button */}
+            <button
+              className="hover:bg-secondary flex size-10 items-center justify-center rounded-xl motion-safe:transition-colors"
+              aria-label="Buscar"
+            >
+              <Image
+                src="/assets/icon-search.svg"
+                alt=""
+                width={20}
+                height={20}
+                className="size-5"
+              />
+            </button>
+
+            {/* Menu Button */}
+            <button
+              className="bg-primary hover:bg-primary-hover flex size-10 items-center justify-center rounded-xl motion-safe:transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={isMenuOpen}
+            >
+              <Image
+                src={isMenuOpen ? '/assets/icon-menu-close.svg' : '/assets/icon-menu.svg'}
+                alt=""
+                width={24}
+                height={24}
+                className="size-6"
+              />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Desktop Search Bar (expandable) */}
-      {isSearchOpen && (
-        <div className="hidden border-t bg-background py-4 md:block">
-          <div className="container">
-            <div className="relative mx-auto max-w-2xl">
-              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-              <input
-                type="search"
-                placeholder="Buscar lojas, produtos, eventos..."
-                className="w-full rounded-md border border-input bg-background py-3 pl-10 pr-12 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                autoFocus
-              />
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-1 top-1/2 -translate-y-1/2"
-                onClick={() => setIsSearchOpen(false)}
-                aria-label="Fechar busca"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Mega Menu */}
+      <MegaMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+      {/* Overlay */}
+      <div
+        className={cn(
+          'fixed inset-0 top-20 bg-black/40 motion-safe:transition-opacity motion-safe:duration-300',
+          isMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        )}
+        onClick={() => setIsMenuOpen(false)}
+        aria-hidden="true"
+      />
     </header>
   );
 }

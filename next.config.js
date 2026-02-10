@@ -18,7 +18,25 @@ const nextConfig = {
         hostname: 'api.ingresso.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        pathname: '/**',
+      },
     ],
+    // Desabilitar otimização para todas as imagens
+    // Isso resolve problemas com placehold.co e outras fontes externas
+    unoptimized: true,
   },
   experimental: {
     serverActions: {

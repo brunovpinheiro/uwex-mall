@@ -1,7 +1,5 @@
 import { Suspense } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Film } from 'lucide-react';
 
 export const revalidate = 900;
 
@@ -12,10 +10,10 @@ export const metadata = {
 
 function CinemaLoading() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
       {Array.from({ length: 8 }).map((_, i) => (
         <div key={i} className="space-y-4">
-          <Skeleton className="aspect-[2/3] rounded-lg" />
+          <Skeleton className="aspect-2/3 rounded-lg" />
           <Skeleton className="h-6 w-full" />
           <Skeleton className="h-4 w-2/3" />
         </div>
@@ -29,11 +27,14 @@ async function CinemaContent() {
   // const filmes = await ingressoClient.getFilmesEmCartaz();
 
   return (
-    <div className="text-center py-12">
-      <Film className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-      <h3 className="text-xl font-semibold mb-2">Em breve</h3>
-      <p className="text-muted-foreground max-w-md mx-auto">
-        A programação do cinema estará disponível em breve. Configure a integração com a API do Ingresso.com.
+    <div className="py-12 text-center">
+      <div className="mb-4 flex justify-center">
+        <i className="hgi-stroke hgi-standard hgi-cinema-01 text-muted-foreground text-[64px]" />
+      </div>
+      <h3 className="mb-2 text-xl font-semibold">Em breve</h3>
+      <p className="text-muted-foreground mx-auto max-w-md">
+        A programação do cinema estará disponível em breve. Configure a integração com a API do
+        Ingresso.com.
       </p>
     </div>
   );

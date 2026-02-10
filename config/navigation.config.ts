@@ -9,12 +9,12 @@ export interface NavItem {
 
 export const mainNav: NavItem[] = [
   {
-    title: 'Lojas',
-    href: '/lojas',
+    title: 'Home',
+    href: '/',
   },
   {
-    title: 'Blog',
-    href: '/blog',
+    title: 'Novidades',
+    href: '/novidades',
   },
   {
     title: 'Eventos',
@@ -25,17 +25,28 @@ export const mainNav: NavItem[] = [
     href: '/cinema',
   },
   {
-    title: 'Vitrine Virtual',
-    href: '/vitrine-virtual',
+    title: 'Lojas',
+    href: '/lojas',
   },
   {
-    title: 'Quem Somos',
-    href: '/quem-somos',
+    title: 'Gastronomia',
+    href: '/gastronomia',
   },
   {
-    title: 'Contato',
+    title: 'Fale Conosco',
     href: '/contato',
   },
+];
+
+export const megaMenuNav: NavItem[] = [
+  { title: 'Sobre nós', href: '/quem-somos' },
+  { title: 'Lazer', href: '/lazer' },
+  { title: 'Comodidades', href: '/comodidades' },
+  { title: 'Sustentabilidade', href: '/sustentabilidade' },
+  { title: 'Turismo', href: '/turismo' },
+  { title: 'Merchandising', href: '/merchandising' },
+  { title: 'Comercialização', href: '/comercializacao' },
+  { title: 'Trabalhe Conosco', href: '/trabalhe-conosco' },
 ];
 
 export const footerNav = {

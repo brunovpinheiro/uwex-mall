@@ -29,7 +29,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://sets.hugeicons.com/988i8wx4hyt.css"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Toaster position="top-right" richColors />

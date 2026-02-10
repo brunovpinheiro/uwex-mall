@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getStrapiMedia } from '@/lib/strapi/utils';
 import { formatDate } from '@/lib/utils/format';
-import { Calendar, MapPin, Clock } from 'lucide-react';
 import type { Evento } from '@/types/strapi';
 
 interface EventoCardProps {
@@ -42,7 +41,7 @@ export default function EventoCard({ evento }: EventoCardProps) {
 
         <CardContent className="space-y-2">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Calendar className="h-4 w-4" />
+            <i className="hgi-stroke hgi-standard hgi-calendar-03 text-base" />
             <span>
               {formatDate(evento.dataInicio)}
               {evento.dataFim !== evento.dataInicio && ` - ${formatDate(evento.dataFim)}`}
@@ -50,12 +49,12 @@ export default function EventoCard({ evento }: EventoCardProps) {
           </div>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Clock className="h-4 w-4" />
+            <i className="hgi-stroke hgi-standard hgi-clock-01 text-base" />
             <span>{evento.horarioInicio} - {evento.horarioFim}</span>
           </div>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin className="h-4 w-4" />
+            <i className="hgi-stroke hgi-standard hgi-location-01 text-base" />
             <span>{evento.local}</span>
           </div>
 

@@ -1,43 +1,74 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { getStrapiMedia } from '@/lib/strapi/utils';
+import { cn } from '@/lib/utils/cn';
 import type { Loja } from '@/types/strapi';
 
 interface LojaCardProps {
   loja: Loja;
+  variant?: 'light' | 'primary';
 }
 
-export default function LojaCard({ loja }: LojaCardProps) {
+
+export default function LojaCard({ loja, variant = 'light' }: LojaCardProps) {
   const logoUrl = getStrapiMedia(loja.logo);
+  const isPrimary = variant === 'primary';
+  
+  // Use placeholder if no logo URL is available
+  const imageUrl = logoUrl || `https://placehold.co/400x500/00B1E1/FFFFFF?text=${encodeURIComponent(loja.nome)}`;
 
   return (
-    <Link href={`/lojas/${loja.slug}`}>
-      <Card className="group hover:shadow-lg transition-shadow h-full">
-        <CardContent className="p-4">
-          <div className="relative aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
-            <Image
-              src={logoUrl}
-              alt={loja.nome}
-              fill
-              className="object-contain p-4 group-hover:scale-105 transition-transform"
-            />
-            {loja.destaque && (
-              <Badge className="absolute top-2 right-2">Destaque</Badge>
-            )}
-          </div>
+    <Link
+      href={`/lojas/${loja.slug}`}
+      className="group flex w-full flex-col items-start"
+    >
+      {/* Image container */}
+      <div
+        className={cn(
+          'relative w-full overflow-hidden rounded-[20px] border',
+          isPrimary
+            ? 'aspect-297/372 border-[rgba(0,177,225,0.2)]'
+            : 'aspect-square border-[#dae2f0]'
+        )}
+      >
+        <Image
+          src={imageUrl}
+          alt={loja.nome}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 50vw, 340px"
+        />
 
-          <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
-            {loja.nome}
-          </h3>
+        {/* Hover overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-[rgba(16,24,40,0.1)] opacity-0 backdrop-blur-xs transition-opacity duration-300 group-hover:opacity-100">
+          <span className="inline-flex h-10 items-center gap-2 rounded-[12px] border border-border bg-background px-5 pr-4 text-base font-semibold text-foreground">
+            Saiba mais
+            <i className="hgi-stroke hgi-standard hgi-arrow-up-right-01 text-sm" />
+          </span>
+        </div>
+      </div>
 
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>{loja.categoria?.nome || 'Loja'}</span>
-            <span>{loja.piso}</span>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Body */}
+      <div className="w-full px-4 pb-4 pt-2">
+        <p
+          className={cn(
+            'truncate text-base font-bold',
+            isPrimary ? 'text-primary-foreground' : 'text-[#101828]'
+          )}
+        >
+          {loja.nome}
+        </p>
+        <p
+          className={cn(
+            'text-sm font-medium tracking-[0.2px]',
+            isPrimary ? 'text-[#e1f6fa]' : 'text-muted-foreground'
+          )}
+        >
+          {loja.piso}
+        </p>
+      </div>
     </Link>
   );
 }
