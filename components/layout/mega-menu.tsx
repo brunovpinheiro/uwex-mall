@@ -43,7 +43,7 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   return (
     <div
       className={cn(
-        'relative z-[1] w-full overflow-hidden overscroll-contain motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out',
+        'relative z-[1] w-full overflow-hidden overscroll-contain',
         isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
       )}
     >
@@ -60,10 +60,9 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                   key={item.href}
                   href={item.href}
                   onClick={onClose}
-                  className="group hover:text-primary relative text-[19px] leading-[1.5] font-normal text-white motion-safe:transition-colors"
+                  className="hover:text-primary relative text-[19px] leading-[1.5] font-normal text-white motion-safe:transition-colors"
                 >
                   {item.title}
-                  <span className="bg-primary absolute top-1/2 left-0 h-0.5 w-0 -translate-y-1/2 group-hover:w-full motion-safe:transition-all" />
                 </Link>
               ))}
             </nav>

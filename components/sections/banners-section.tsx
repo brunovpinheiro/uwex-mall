@@ -44,7 +44,7 @@ const placeholderBanners: BannerItem[] = [
 export function BannersSection({ banners = placeholderBanners }: BannersSectionProps) {
   return (
     <section className="bg-background flex items-center justify-center px-20 pb-24">
-      <div className="w-full max-w-[1408px] overflow-hidden rounded-[24px] shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.03),0px_8px_8px_-4px_rgba(16,24,40,0.03)]">
+      <div className="container mx-auto overflow-hidden rounded-[24px] shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.03),0px_8px_8px_-4px_rgba(16,24,40,0.03)]">
         <div className="overflow-hidden rounded-[20px]">
           <Swiper
             modules={[Navigation, Pagination, A11y, Autoplay]}
@@ -62,11 +62,7 @@ export function BannersSection({ banners = placeholderBanners }: BannersSectionP
             {banners.map((banner) => (
               <SwiperSlide key={banner.id}>
                 {banner.link ? (
-                  <a
-                    href={banner.link}
-                    className="block w-full"
-                    aria-label={banner.alt}
-                  >
+                  <a href={banner.link} className="block w-full" aria-label={banner.alt}>
                     <div className="relative aspect-1408/320 w-full">
                       <Image
                         src={banner.image}

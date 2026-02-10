@@ -64,12 +64,12 @@ export function AmenitiesSection() {
         </div>
 
         {/* Content layout with image and grid */}
-        <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-end">
+        <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-stretch">
           {/* Left side: Mascot image */}
-          <div className="w-full shrink-0 lg:w-[328px]">
-            <div className="bg-primary relative h-[424px] w-full overflow-hidden rounded-[20px]">
+          <div className="h-auto w-full shrink-0 lg:w-[328px]">
+            <div className="bg-primary relative h-full w-full overflow-hidden rounded-[20px]">
               <img
-                src="/5728385b8fee5dfdac7927ceea2d4e6837524064.png"
+                src="/assets/banner-comodidades.png"
                 alt="Shopping Estação Mascote"
                 className="h-full w-full object-cover object-center"
               />

@@ -228,6 +228,10 @@ button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.banners-swiper .swiper-navigation-icon {
+  transform: scale(0.6);
+}
+
 .banners-swiper .swiper-button-prev:hover,
 .banners-swiper .swiper-button-next:hover {
   background: rgba(255, 255, 255, 1);

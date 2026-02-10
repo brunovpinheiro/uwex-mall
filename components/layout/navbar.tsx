@@ -124,7 +124,7 @@ export default function Navbar() {
       {/* Overlay */}
       <div
         className={cn(
-          'fixed inset-0 top-20 bg-black/40 motion-safe:transition-opacity motion-safe:duration-300',
+          'fixed inset-0 top-20 bg-black/40',
           isMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={() => setIsMenuOpen(false)}

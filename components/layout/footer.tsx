@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 export default function Footer() {
   return (
     <footer className="w-full bg-(--footer-background) px-(--padding-global-mobile) py-14 md:px-(--padding-global) md:pt-14 md:pb-10">
-      <div className="mx-auto flex max-w-(--max-container) flex-col gap-8">
+      <div className="container mx-auto flex flex-col gap-8">
         {/* Header: Logo + Navigation */}
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           {/* Logo */}
@@ -172,7 +172,7 @@ export default function Footer() {
           </div>
 
           {/* Baixe nosso App */}
-          <div className="flex w-full max-w-[200px] flex-1 flex-col gap-4 rounded-[20px] bg-(--footer-background-subtle) p-8">
+          <div className="flex w-full flex-1 flex-col gap-4 rounded-[20px] bg-(--footer-background-subtle) p-8 lg:max-w-[200px]">
             <h3 className="text-sm font-bold tracking-wide text-(--footer-foreground)">
               Baixe nosso App
             </h3>
