@@ -1,3 +1,5 @@
+import qs from 'qs';
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '';
 
@@ -22,48 +24,10 @@ class StrapiClient {
   }
 
   private buildQueryString(options: FetchOptions): string {
-    const params = new URLSearchParams();
-
-    if (options.populate) {
-      if (typeof options.populate === 'string') {
-        params.append('populate', options.populate);
-      } else if (Array.isArray(options.populate)) {
-        options.populate.forEach((item) => params.append('populate', item));
-      } else {
-        params.append('populate', JSON.stringify(options.populate));
-      }
-    }
-
-    if (options.filters) {
-      Object.entries(options.filters).forEach(([key, value]) => {
-        if (value !== undefined && value !== null) {
-          params.append(`filters[${key}]`, JSON.stringify(value));
-        }
-      });
-    }
-
-    if (options.sort) {
-      if (Array.isArray(options.sort)) {
-        options.sort.forEach((item) => params.append('sort', item));
-      } else {
-        params.append('sort', options.sort);
-      }
-    }
-
-    if (options.pagination) {
-      if (options.pagination.page) {
-        params.append('pagination[page]', options.pagination.page.toString());
-      }
-      if (options.pagination.pageSize) {
-        params.append('pagination[pageSize]', options.pagination.pageSize.toString());
-      }
-    }
-
-    if (options.publicationState) {
-      params.append('publicationState', options.publicationState);
-    }
-
-    return params.toString();
+    // Usa qs.stringify para construir query strings compatíveis com Strapi v5
+    return qs.stringify(options, {
+      encodeValuesOnly: true, // Apenas valores são codificados
+    });
   }
 
   async get(path: string, options: FetchOptions = {}) {

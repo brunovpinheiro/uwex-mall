@@ -35,15 +35,28 @@ export function getStrapiImageProps(media: any, sizes?: string) {
 export function extractStrapiData<T>(response: any): T {
   if (response.data) {
     if (Array.isArray(response.data)) {
-      return response.data.map((item: any) => ({
-        id: item.id,
-        ...item.attributes,
-      })) as T;
+      return response.data.map((item: any) => {
+        // Strapi v5 pode ter estrutura diferente
+        if (item.attributes) {
+          return {
+            id: item.id,
+            documentId: item.documentId,
+            ...item.attributes,
+          };
+        }
+        // Se não tiver attributes, retorna o item como está
+        return item;
+      }) as T;
     }
-    return {
-      id: response.data.id,
-      ...response.data.attributes,
-    } as T;
+    // Single item
+    if (response.data.attributes) {
+      return {
+        id: response.data.id,
+        documentId: response.data.documentId,
+        ...response.data.attributes,
+      } as T;
+    }
+    return response.data as T;
   }
   return response as T;
 }

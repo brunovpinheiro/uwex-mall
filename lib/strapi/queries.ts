@@ -259,3 +259,86 @@ export async function getCinemaConfig() {
   const response = await strapi.get('/api/cinema-config');
   return extractStrapiData<CinemaConfig>(response);
 }
+
+// Home - Buscar conteúdo em destaque (evento ou post)
+export async function getConteudoDestaque() {
+  // Primeiro tenta buscar um evento em destaque
+  const eventosResponse = await strapi.get('/api/eventos', {
+    populate: ['imagemPrincipal'],
+    filters: {
+      destaque: { $eq: true },
+      ativo: { $eq: true },
+      dataFim: { $gte: new Date().toISOString() },
+    },
+    sort: ['dataInicio:asc'],
+    pagination: { page: 1, pageSize: 1 },
+  });
+
+  const eventosData = extractStrapiData<Evento[]>(eventosResponse);
+  if (eventosData && eventosData.length > 0) {
+    return { type: 'evento' as const, data: eventosData[0] };
+  }
+
+  // Se não houver evento em destaque, tenta buscar um post em destaque
+  const postsResponse = await strapi.get('/api/posts', {
+    populate: ['imagemDestaque', 'categoria'],
+    filters: {
+      destaque: { $eq: true },
+      publicado: { $eq: true },
+    },
+    sort: ['dataPublicacao:desc'],
+    pagination: { page: 1, pageSize: 1 },
+  });
+
+  const postsData = extractStrapiData<Post[]>(postsResponse);
+  if (postsData && postsData.length > 0) {
+    return { type: 'post' as const, data: postsData[0] };
+  }
+
+  // Se não houver nada em destaque, busca o evento mais recente
+  const eventoRecenteResponse = await strapi.get('/api/eventos', {
+    populate: ['imagemPrincipal'],
+    filters: {
+      ativo: { $eq: true },
+      dataFim: { $gte: new Date().toISOString() },
+    },
+    sort: ['dataInicio:asc'],
+    pagination: { page: 1, pageSize: 1 },
+  });
+
+  const eventoRecenteData = extractStrapiData<Evento[]>(eventoRecenteResponse);
+  if (eventoRecenteData && eventoRecenteData.length > 0) {
+    return { type: 'evento' as const, data: eventoRecenteData[0] };
+  }
+
+  // Se não houver evento recente, busca o post mais recente
+  const postRecenteResponse = await strapi.get('/api/posts', {
+    populate: ['imagemDestaque', 'categoria'],
+    filters: {
+      publicado: { $eq: true },
+    },
+    sort: ['dataPublicacao:desc'],
+    pagination: { page: 1, pageSize: 1 },
+  });
+
+  const postRecenteData = extractStrapiData<Post[]>(postRecenteResponse);
+  if (postRecenteData && postRecenteData.length > 0) {
+    return { type: 'post' as const, data: postRecenteData[0] };
+  }
+
+  return null;
+}
+
+// Home - Buscar lista de posts/eventos recentes para a lateral
+export async function getNoticiasRecentes(limit: number = 3) {
+  const postsResponse = await strapi.get('/api/posts', {
+    populate: ['imagemDestaque', 'categoria'],
+    filters: {
+      publicado: { $eq: true },
+    },
+    sort: ['dataPublicacao:desc'],
+    pagination: { page: 1, pageSize: limit },
+  });
+
+  return extractStrapiData<Post[]>(postsResponse);
+}

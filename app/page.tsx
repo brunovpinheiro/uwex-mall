@@ -30,9 +30,7 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="s-home-news-events">
-        <NewsEventsSection />
-      </section>
+      <NewsEventsSection />
 
       <section className="s-home-minibanners"></section>
 

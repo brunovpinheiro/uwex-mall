@@ -35,7 +35,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full">
       {/* Navbar */}
       <div className="bg-background relative z-[2] flex h-20 w-full items-center justify-center px-(--padding-global-mobile) shadow-[0px_8px_10px_0px_rgba(38,54,79,0.06)] md:px-(--padding-global)">
-        <div className="flex w-full max-w-(--max-container) items-center gap-6">
+        <div className="container mx-auto flex w-full items-center gap-6">
           {/* Logo */}
           <div className="flex max-w-72 flex-1 items-start py-4">
             <Link href="/" className="relative h-12 w-[150px] overflow-hidden">

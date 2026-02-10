@@ -13,14 +13,118 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const placeholderLojas: Loja[] = [
-  { id: 1, nome: 'Arezzo', slug: 'arezzo', descricao: '', logo: { id: 1, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 2, nome: 'Acium', slug: 'acium', descricao: '', logo: { id: 2, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 3, nome: 'Adidas Performance', slug: 'adidas-performance', descricao: '', logo: { id: 3, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 4, nome: 'Havaianas', slug: 'havaianas', descricao: '', logo: { id: 4, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 5, nome: 'Ana Capri', slug: 'ana-capri', descricao: '', logo: { id: 5, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 6, nome: 'Artwalk', slug: 'artwalk', descricao: '', logo: { id: 6, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 7, nome: 'Anita Voss', slug: 'anita-voss', descricao: '', logo: { id: 7, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
-  { id: 8, nome: 'Bloodstream', slug: 'bloodstream', descricao: '', logo: { id: 8, url: 'https://placehold.co/400x500' }, categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 }, localizacao: '', piso: 'Piso 1', destaque: true, ativo: true, createdAt: '', updatedAt: '' },
+  {
+    id: 1,
+    nome: 'Arezzo',
+    slug: 'arezzo',
+    descricao: '',
+    logo: { id: 1, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 2,
+    nome: 'Acium',
+    slug: 'acium',
+    descricao: '',
+    logo: { id: 2, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 3,
+    nome: 'Adidas Performance',
+    slug: 'adidas-performance',
+    descricao: '',
+    logo: { id: 3, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 4,
+    nome: 'Havaianas',
+    slug: 'havaianas',
+    descricao: '',
+    logo: { id: 4, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 5,
+    nome: 'Ana Capri',
+    slug: 'ana-capri',
+    descricao: '',
+    logo: { id: 5, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 6,
+    nome: 'Artwalk',
+    slug: 'artwalk',
+    descricao: '',
+    logo: { id: 6, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 7,
+    nome: 'Anita Voss',
+    slug: 'anita-voss',
+    descricao: '',
+    logo: { id: 7, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
+  {
+    id: 8,
+    nome: 'Bloodstream',
+    slug: 'bloodstream',
+    descricao: '',
+    logo: { id: 8, url: 'https://placehold.co/400x500' },
+    categoria: { id: 1, nome: 'Moda', slug: 'moda', ordem: 1 },
+    localizacao: '',
+    piso: 'Piso 1',
+    destaque: true,
+    ativo: true,
+    createdAt: '',
+    updatedAt: '',
+  },
 ];
 
 interface StoresSectionProps {
@@ -29,7 +133,7 @@ interface StoresSectionProps {
 
 export function StoresSection({ lojas = placeholderLojas }: StoresSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-primary py-24">
+    <section className="bg-primary relative overflow-hidden py-24">
       {/* Background pattern */}
       <div className="pointer-events-none absolute inset-0 flex items-start justify-center opacity-10">
         <svg
@@ -46,14 +150,14 @@ export function StoresSection({ lojas = placeholderLojas }: StoresSectionProps) 
         </svg>
       </div>
 
-      <div className="relative mx-auto flex max-w-(--max-container) flex-col gap-6 px-(--padding-global)">
+      <div className="relative container mx-auto flex flex-col gap-6">
         {/* Heading */}
         <div className="flex items-center gap-[30px]">
           <div className="flex flex-1 items-center gap-4">
             <div className="flex size-14 shrink-0 items-center justify-center rounded-[20px] bg-white/20">
               <i className="hgi-stroke hgi-standard hgi-store-01 text-[32px] text-white" />
             </div>
-            <h2 className="font-heading text-[33px] font-bold leading-[1.3] text-primary-foreground">
+            <h2 className="font-heading text-primary-foreground text-[33px] leading-[1.3] font-bold">
               Nossas lojas
             </h2>
           </div>
@@ -67,15 +171,15 @@ export function StoresSection({ lojas = placeholderLojas }: StoresSectionProps) 
         </div>
 
         {/* Swiper slider for store cards */}
-        <div className="-mx-(--padding-global)">
+        <div className="">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={32}
             slidesPerView="auto"
             navigation
-            pagination={{ 
+            pagination={{
               clickable: true,
-              dynamicBullets: true 
+              dynamicBullets: true,
             }}
             autoplay={{
               delay: 3000,
@@ -99,7 +203,7 @@ export function StoresSection({ lojas = placeholderLojas }: StoresSectionProps) 
                 spaceBetween: 32,
               },
             }}
-            className="px-(--padding-global) pb-12"
+            className="pb-12"
           >
             {lojas.map((loja) => (
               <SwiperSlide key={loja.id} className="w-[240px]!">
